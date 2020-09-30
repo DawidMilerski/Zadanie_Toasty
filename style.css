@@ -1,0 +1,45 @@
+#nav{
+    width: 100%;
+    background-color: #005acc;
+    padding: 40px;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#th1{
+    background-color: #007bff;
+    color: #fff;
+}
+
+#th2{
+    background-color: #ffc107;
+    color: #fff;
+}
+
+#th3{
+    background-color: #dc3545;
+    color: #fff;
+}
+
+
+.btn{
+    height: 50px;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+#btn-2:hover{
+    color: #fff;
+}
+
+.toast{
+    min-width: 250px;
+}
