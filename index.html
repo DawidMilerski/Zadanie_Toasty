@@ -11,13 +11,19 @@
   <body>
     <div id="nav">Bootstrap - button, toast</div>
 
+    <div class="container">
+      <div class="row">
         <button type="button" id="btn-1" class="btn btn-outline-primary btn-block">Messenger</button>
         <button type="button" id="btn-2" class="btn btn-outline-warning btn-block">Snapchat</button>
-        <button type="button" id="btn-3" class="btn btn-outline-danger btn-block">YouTube</button>    
-    
-    <div aria-live="polite" aria-atomic="true"> <!-- style="position: relative; min-height: 200px;" -->
+        <button type="button" id="btn-3" class="btn btn-outline-danger btn-block">Netflix</button>
+        <button type="button" id="btn-4" class="btn btn-outline-success btn-block">Spotify</button>
+        <button type="button" id="btn-5" class="btn btn-outline-primary btn-block">Twitch</button>
+    </div>
+  </div>
 
-        <div style="position: absolute; bottom: 30px; right: 30px;">
+    <div aria-live="polite" aria-atomic="true">
+
+        <div id="box" style="position: absolute; bottom: 30px; right: 30px;">
         <div class="toast" id="toast1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
           <div class="toast-header" id="th1">
             <img class="rounded mr-2">
@@ -31,10 +37,8 @@
             Adam: Cześć, możesz mi wysłać...
           </div>
         </div>
-      </div>
 
-      
-      <div style="position: absolute; bottom: 30px; right: 30px;">
+
       <div class="toast" id="toast2" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header" id="th2">
           <img class="rounded mr-2">
@@ -48,51 +52,102 @@
           Ola: Wysłała snapa
         </div>
       </div>
-      </div>
-    </div>
 
-    
-    <div style="position: absolute; bottom: 30px; right: 30px;">
+
     <div class="toast" id="toast3" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header" id="th3">
           <img class="rounded mr-2">
-          <strong class="mr-auto">YouTube</strong>
+          <strong class="mr-auto">Netflix</strong>
           <small>just now</small>
           <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="toast-body">
-          XYZ: Prowadzi transmisję na ży..
+          Zobacz nowości z października!
         </div>
       </div>
+
+      <div class="toast" id="toast4" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+        <div class="toast-header" id="th4">
+          <img class="rounded mr-2">
+          <strong class="mr-auto">Spotify</strong>
+          <small>just now</small>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">
+          XYZ: Nowy album
+        </div>
+      </div>
+
+      <div class="toast" id="toast5" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+        <div class="toast-header" id="th5">
+          <img class="rounded mr-2">
+          <strong class="mr-auto">Twitch</strong>
+          <small>just now</small>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">
+          XYZ: Transmituje na ży..
+        </div>
       </div>
     </div>
+  </div>
 
       <script>
           const btn1 = document.getElementById('btn-1');
           const btn2 = document.getElementById('btn-2');
           const btn3 = document.getElementById('btn-3');
+          const btn4 = document.getElementById('btn-4');
+          const btn5 = document.getElementById('btn-5');
+          const box = document.getElementById('box');
 
+          const messTemp = document.getElementById('toast1');
+          const snapTemp = document.getElementById('toast2');
+          const netflixTemp = document.getElementById('toast3');
+          const spotifyTemp = document.getElementById('toast4');
+          const twitchTemp = document.getElementById('toast5');
+          
 
           function mess(){
-              $('#toast1').toast('show');
+            let messCopy = messTemp.cloneNode(true);
+            box.appendChild(messCopy);
+            $(messCopy).toast('show');
+          }
+          
+          function snap(){
+            let snapCopy = snapTemp.cloneNode(true);
+            box.appendChild(snapCopy);
+            $(snapCopy).toast('show');
+          }
+
+          function netflix(){
+            let netflixCopy = netflixTemp.cloneNode(true);
+            box.appendChild(netflixCopy);
+            $(netflixCopy).toast('show');
+          }
+
+          function spotify(){
+            let spotifyCopy = spotifyTemp.cloneNode(true);
+            box.appendChild(spotifyCopy);
+            $(spotifyCopy).toast('show');
+          }
+
+          function twitch(){
+            let twitchCopy = twitchTemp.cloneNode(true);
+            box.appendChild(twitchCopy);
+            $(twitchCopy).toast('show');
           }
 
           btn1.addEventListener('click', mess);
-
-          function snap(){
-              $('#toast2').toast('show');
-          }
-
           btn2.addEventListener('click', snap);
-
-          function yt(){
-              $('#toast3').toast('show');
-          }
-
-          btn3.addEventListener('click', yt);
-
+          btn3.addEventListener('click', netflix);
+          btn4.addEventListener('click', spotify);
+          btn5.addEventListener('click', twitch);
 
       </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -100,20 +155,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   </body>
 </html>
-
-<!-- <div aria-live="polite" aria-atomic="true">               style="position: relative; min-height: 200px;"
-
-    <div class="toast" id="toast1" style="position: absolute; bottom: 30px; right: 30px;" data-delay="1000">
-      <div class="toast-header">
-        <img src="..." class="rounded mr-2" alt="...">
-        <strong class="mr-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-    </div>
-  </div> -->
