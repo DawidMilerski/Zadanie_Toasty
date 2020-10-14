@@ -18,18 +18,18 @@
         <button type="button" id="btn-3" class="btn btn-outline-danger btn-block">Netflix</button>
         <button type="button" id="btn-4" class="btn btn-outline-success btn-block">Spotify</button>
         <button type="button" id="btn-5" class="btn btn-outline-primary btn-block">Twitch</button>
-      </div>
-    </div>
 
-    <div id="Text">Jakiś tekst</div>
+        
+    </div>
+  </div>
 
     <div aria-live="polite" aria-atomic="true">
 
-      <div id="box" style="position: absolute; bottom: 30px; right: 30px;">
-        <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+        <div id="box" style="position: absolute; bottom: 30px; right: 30px;">
+        <div class="toast" id="toast1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
           <div class="toast-header" id="th1">
             <img class="rounded mr-2">
-            <strong class="mr-auto"><div id="app">Costam</div></strong>
+            <strong class="mr-auto">Messenger</strong>
             <small>just now</small>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -39,99 +39,9 @@
             Adam: Cześć, możesz mi wysłać...
           </div>
         </div>
-      </div>
-    </div>
-
-      <script>
-        let buttons = document.querySelectorAll('.btn');
-        let box = document.getElementById('box');
-        let text = document.getElementById('Text');
-        let ToastTemp = document.getElementById('toast');
-        let theader = document.getElementById('th1');
 
 
-          /**
-          * 1. Tablica z buttonami bez użycia get Element By Id i $(#..) - użyj klasy
-          *    odnajdz wszystkie elementy z klasa tego buttona
-          * 2. for each po tablicy z buttonami
-          * 3. dodanie addEventListener na click w foreach
-          * 4. Zamiast wielu funkcji powinna byc jedna
-          * 5. W funkcji sklonuj toast (w html powinien byc 1 template toast)
-          */
-
-        console.log(buttons);
-
-        buttons.forEach(function(button, index){
-          button.addEventListener("click", ShowToast);
-          
-
-          function ShowToast(){
-            let ToastCopy = ToastTemp.cloneNode(true);
-            box.appendChild(ToastCopy); 
-
-            if(index == 0){ //Messenger
-              ToastTemp.th1.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-
-
-            }else if(index == 1){ //Snapchat
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-
-
-            }else if(index == 2){ //Netflix
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-
-
-
-            }else if(index == 3){ //Spotify
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-   
-
-
-            }else if(index == 4){ //Twitch
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-
-            }
-
-            $(ToastCopy).toast('show');
-
-            $(ToastCopy).on('hidden.bs.toast', function () {
-                $(ToastCopy).remove();
-            });
-
-          }
-
-        });
-
-          
-      
-          
-
-          function mess(){
-            let messCopy = messTemp.cloneNode(true);
-
-            // tutaj zmien kolor toastu lub go skonfiguruj
-            // dodaj rozny tekst np. pobrany z buttona
-            // podpowiedz: jak uzywasz tu this to masz dostęp do buttona i jego
-            // wartości
-
-            box.appendChild(messCopy);
-            $(messCopy).toast('show');
-
-            $(messCopy).on('hidden.bs.toast', function () {
-                $(messCopy).remove();
-            });
-          }
-
-          
-      </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
-</html>
-
-
-      <!-- <div class="toast" id="toast2" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+      <div class="toast" id="toast2" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header" id="th2">
           <img class="rounded mr-2">
           <strong class="mr-auto">Snapchat</strong>
@@ -188,21 +98,33 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
-<!--
+      <script>
+          const btn1 = document.getElementById('btn-1');
+          const btn2 = document.getElementById('btn-2');
+          const btn3 = document.getElementById('btn-3');
+          const btn4 = document.getElementById('btn-4');
+          const btn5 = document.getElementById('btn-5');
+          const box = document.getElementById('box');
 
-  const btn1 = document.getElementById('btn-1');
-  const btn2 = document.getElementById('btn-2');
-  const btn3 = document.getElementById('btn-3');
-  const btn4 = document.getElementById('btn-4');
-  const btn5 = document.getElementById('btn-5');
 
-  const messTemp = document.getElementById('toast1');
-  const snapTemp = document.getElementById('toast2');
-  const netflixTemp = document.getElementById('toast3');
-  const spotifyTemp = document.getElementById('toast4');
-  const twitchTemp = document.getElementById('toast5'); 
+          const messTemp = document.getElementById('toast1');
+          const snapTemp = document.getElementById('toast2');
+          const netflixTemp = document.getElementById('toast3');
+          const spotifyTemp = document.getElementById('toast4');
+          const twitchTemp = document.getElementById('toast5');
+
+
+          function mess(){
+            let messCopy = messTemp.cloneNode(true);
+            box.appendChild(messCopy);
+            $(messCopy).toast('show');
+
+            $(messCopy).on('hidden.bs.toast', function () {
+                $(messCopy).remove();
+            });
+          }
 
           function snap(){
             let snapCopy = snapTemp.cloneNode(true);
@@ -249,4 +171,10 @@
           btn3.addEventListener('click', netflix);
           btn4.addEventListener('click', spotify);
           btn5.addEventListener('click', twitch);
--->
+
+      </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
