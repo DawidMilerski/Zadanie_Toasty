@@ -21,22 +21,19 @@
       </div>
     </div>
 
-    <div id="Text">Jakiś tekst</div>
-
     <div aria-live="polite" aria-atomic="true">
 
       <div id="box" style="position: absolute; bottom: 30px; right: 30px;">
         <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-          <div class="toast-header" id="th1">
+          <div class="toast-header" id="th">
             <img class="rounded mr-2">
-            <strong class="mr-auto"><div id="app">Costam</div></strong>
+            <strong class="mr-auto" id="appName"></strong>
             <small>just now</small>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="toast-body">
-            Adam: Cześć, możesz mi wysłać...
+          <div class="toast-body" id="appBody">
           </div>
         </div>
       </div>
@@ -45,84 +42,58 @@
       <script>
         let buttons = document.querySelectorAll('.btn');
         let box = document.getElementById('box');
-        let text = document.getElementById('Text');
+        let theader = document.getElementById('th');
+        let appName = document.getElementById('appName');
+        let appBody = document.getElementById('appBody');
         let ToastTemp = document.getElementById('toast');
-        let theader = document.getElementById('th1');
 
-
-          /**
-          * 1. Tablica z buttonami bez użycia get Element By Id i $(#..) - użyj klasy
-          *    odnajdz wszystkie elementy z klasa tego buttona
-          * 2. for each po tablicy z buttonami
-          * 3. dodanie addEventListener na click w foreach
-          * 4. Zamiast wielu funkcji powinna byc jedna
-          * 5. W funkcji sklonuj toast (w html powinien byc 1 template toast)
-          */
-
-        console.log(buttons);
 
         buttons.forEach(function(button, index){
-          button.addEventListener("click", ShowToast);
-          
+          button.addEventListener("click", ShowToast);          
 
-          function ShowToast(){
-            let ToastCopy = ToastTemp.cloneNode(true);
-            box.appendChild(ToastCopy); 
+          function ShowToast(){            
 
             if(index == 0){ //Messenger
-              ToastTemp.th1.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-
+              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
+              appName.innerHTML = "Messenger";
+              appBody.innerHTML = "Adam: Cześć, możesz mi wysłać...";
+              
 
             }else if(index == 1){ //Snapchat
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
+              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
+              appName.innerHTML = "Snapchat";
+              appBody.innerHTML = "Ola: Wysłała snapa";
 
 
             }else if(index == 2){ //Netflix
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-
+              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
+              appName.innerHTML = "Netflix";
+              appBody.innerHTML = "Zobacz nowości z października!";
 
 
             }else if(index == 3){ //Spotify
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-   
+              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
+              appName.innerHTML = "Spotify";
+              appBody.innerHTML = "XYZ: Nowy album";
 
 
             }else if(index == 4){ //Twitch
-              ToastCopy.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
-
+              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
+              appName.innerHTML = "Twitch";
+              appBody.innerHTML = "XYZ: Transmituje na żywo";
             }
 
+
+            let ToastCopy = ToastTemp.cloneNode(true);
+            box.appendChild(ToastCopy);
             $(ToastCopy).toast('show');
 
             $(ToastCopy).on('hidden.bs.toast', function () {
                 $(ToastCopy).remove();
             });
-
           }
-
         });
 
-          
-      
-          
-
-          function mess(){
-            let messCopy = messTemp.cloneNode(true);
-
-            // tutaj zmien kolor toastu lub go skonfiguruj
-            // dodaj rozny tekst np. pobrany z buttona
-            // podpowiedz: jak uzywasz tu this to masz dostęp do buttona i jego
-            // wartości
-
-            box.appendChild(messCopy);
-            $(messCopy).toast('show');
-
-            $(messCopy).on('hidden.bs.toast', function () {
-                $(messCopy).remove();
-            });
-          }
-
-          
       </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -130,123 +101,19 @@
   </body>
 </html>
 
+      <!-- INSTRUKCJE:
 
-      <!-- <div class="toast" id="toast2" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-        <div class="toast-header" id="th2">
-          <img class="rounded mr-2">
-          <strong class="mr-auto">Snapchat</strong>
-          <small>just now</small>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          Ola: Wysłała snapa
-        </div>
-      </div>
+          * 1. Tablica z buttonami bez użycia get Element By Id i $(#..) - użyj klasy
+          *    odnajdz wszystkie elementy z klasa tego buttona
+          * 2. for each po tablicy z buttonami
+          * 3. dodanie addEventListener na click w foreach
+          * 4. Zamiast wielu funkcji powinna byc jedna
+          * 5. W funkcji sklonuj toast (w html powinien byc 1 template toast)
+          
 
-
-    <div class="toast" id="toast3" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-        <div class="toast-header" id="th3">
-          <img class="rounded mr-2">
-          <strong class="mr-auto">Netflix</strong>
-          <small>just now</small>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          Zobacz nowości z października!
-        </div>
-      </div>
-
-      <div class="toast" id="toast4" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-        <div class="toast-header" id="th4">
-          <img class="rounded mr-2">
-          <strong class="mr-auto">Spotify</strong>
-          <small>just now</small>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          XYZ: Nowy album
-        </div>
-      </div>
-
-      <div class="toast" id="toast5" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-        <div class="toast-header" id="th5">
-          <img class="rounded mr-2">
-          <strong class="mr-auto">Twitch</strong>
-          <small>just now</small>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          XYZ: Transmituje na ży..
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-<!--
-
-  const btn1 = document.getElementById('btn-1');
-  const btn2 = document.getElementById('btn-2');
-  const btn3 = document.getElementById('btn-3');
-  const btn4 = document.getElementById('btn-4');
-  const btn5 = document.getElementById('btn-5');
-
-  const messTemp = document.getElementById('toast1');
-  const snapTemp = document.getElementById('toast2');
-  const netflixTemp = document.getElementById('toast3');
-  const spotifyTemp = document.getElementById('toast4');
-  const twitchTemp = document.getElementById('toast5'); 
-
-          function snap(){
-            let snapCopy = snapTemp.cloneNode(true);
-            box.appendChild(snapCopy);
-            $(snapCopy).toast('show');
-
-            $(snapCopy).on('hidden.bs.toast', function () {
-                $(snapCopy).remove();
-            });
-          }
-
-          function netflix(){
-            let netflixCopy = netflixTemp.cloneNode(true);
-            box.appendChild(netflixCopy);
-            $(netflixCopy).toast('show');
-
-            $(netflixCopy).on('hidden.bs.toast', function () {
-                $(netflixCopy).remove();
-            });
-          }
-
-          function spotify(){
-            let spotifyCopy = spotifyTemp.cloneNode(true);
-            box.appendChild(spotifyCopy);
-
-            $(spotifyCopy).toast('show');
-
-            $(spotifyCopy).on('hidden.bs.toast', function () {
-                $(spotifyCopy).remove();
-            });
-          }
-
-          function twitch(){
-            let twitchCopy = twitchTemp.cloneNode(true);
-            box.appendChild(twitchCopy);
-            $(twitchCopy).toast('show');
-            $(twitchCopy).on('hidden.bs.toast', function () {
-                $(twitchCopy).remove();
-            });
-          }
-
-          btn1.addEventListener('click', mess);
-          btn2.addEventListener('click', snap);
-          btn3.addEventListener('click', netflix);
-          btn4.addEventListener('click', spotify);
-          btn5.addEventListener('click', twitch);
--->
+            tutaj zmien kolor toastu lub go skonfiguruj
+            dodaj rozny tekst np. pobrany z buttona
+            podpowiedz: jak uzywasz tu this to masz dostęp do buttona i jego
+            wartości
+          
+          -->

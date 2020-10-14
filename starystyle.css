@@ -9,7 +9,28 @@
     margin-bottom: 30px;
 }
 
-#th{
+#th1{
+    background-color: #0078FF;
+    color: #fff;
+}
+
+#th2{
+    background-color: #ffc107;
+    color: #fff;
+}
+
+#th3{
+    background-color: #E50914;
+    color: #fff;
+}
+
+#th4{
+    background-color: #1DB954;
+    color: #fff;
+}
+
+#th5{
+    background-color: #6441A4;
     color: #fff;
 }
 
