@@ -52,36 +52,33 @@
 
           function ShowToast(){            
 
-            if(index == 0){ //Messenger
+            switch(index){
+              case 0:
               theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Messenger";
               appBody.innerHTML = "Adam: Cześć, możesz mi wysłać...";
-              
-
-            }else if(index == 1){ //Snapchat
+              break;
+              case 1:
               theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Snapchat";
               appBody.innerHTML = "Ola: Wysłała snapa";
-
-
-            }else if(index == 2){ //Netflix
+              break;
+              case 2:
               theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Netflix";
               appBody.innerHTML = "Zobacz nowości z października!";
-
-
-            }else if(index == 3){ //Spotify
+              break;
+              case 3:
               theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Spotify";
               appBody.innerHTML = "XYZ: Nowy album";
-
-
-            }else if(index == 4){ //Twitch
+              break;
+              case 4:
               theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Twitch";
               appBody.innerHTML = "XYZ: Transmituje na żywo";
-            }
-
+              break;
+              }
 
             let ToastCopy = ToastTemp.cloneNode(true);
             box.appendChild(ToastCopy);
