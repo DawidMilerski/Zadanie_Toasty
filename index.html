@@ -54,32 +54,28 @@
 
             switch(index){
               case 0:
-              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Messenger";
               appBody.innerHTML = "Adam: Cześć, możesz mi wysłać...";
               break;
               case 1:
-              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Snapchat";
               appBody.innerHTML = "Ola: Wysłała snapa";
               break;
               case 2:
-              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Netflix";
               appBody.innerHTML = "Zobacz nowości z października!";
               break;
               case 3:
-              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Spotify";
               appBody.innerHTML = "XYZ: Nowy album";
               break;
               case 4:
-              theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
               appName.innerHTML = "Twitch";
               appBody.innerHTML = "XYZ: Transmituje na żywo";
               break;
               }
 
+            theader.style.backgroundColor = document.defaultView.getComputedStyle(this, "").backgroundColor;
             let ToastCopy = ToastTemp.cloneNode(true);
             box.appendChild(ToastCopy);
             $(ToastCopy).toast('show');
